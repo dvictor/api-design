@@ -111,6 +111,12 @@ func (s *BaseMyDSLListener) EnterFieldBody(ctx *FieldBodyContext) {}
 // ExitFieldBody is called when production fieldBody is exited.
 func (s *BaseMyDSLListener) ExitFieldBody(ctx *FieldBodyContext) {}
 
+// EnterRequired is called when production required is entered.
+func (s *BaseMyDSLListener) EnterRequired(ctx *RequiredContext) {}
+
+// ExitRequired is called when production required is exited.
+func (s *BaseMyDSLListener) ExitRequired(ctx *RequiredContext) {}
+
 // EnterValidation is called when production validation is entered.
 func (s *BaseMyDSLListener) EnterValidation(ctx *ValidationContext) {}
 

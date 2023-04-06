@@ -14,20 +14,20 @@ for the DSL features.
 
 These should be the steps:
 1. create the API design
-  ```
+  ```hcl
     service MyService {
         method AddNumbers {
             payload {
                 field first Integer {
                     description = "first operand"
-                    required
+                    required = true
                 }
                 field second Integer {
                     description = "second operand"
-                    required
+                    required = true
                 }
             }
-            result Integer
+            response = Integer
         }
     }
   ```

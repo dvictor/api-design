@@ -34,77 +34,78 @@ func mydslParserInit() {
 	staticData := &mydslParserStaticData
 	staticData.literalNames = []string{
 		"", "'import'", "'service'", "'{'", "'}'", "'method'", "'response'",
-		"'payload'", "'description'", "'field'", "'required'", "'optional'",
+		"'payload'", "'description'", "'field'", "'required'", "'true'", "'false'",
 		"'match'", "'type'", "'='",
 	}
 	staticData.symbolicNames = []string{
-		"", "", "", "", "", "", "", "", "", "", "", "", "", "", "EQUAL_SIGN",
+		"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "EQUAL_SIGN",
 		"IDENTIFIER", "COMMENT", "MULTILINE_COMMENT", "STRING_LITERAL", "WS",
 	}
 	staticData.ruleNames = []string{
 		"apiBody", "importDirective", "service", "serviceName", "serviceBody",
 		"method", "methodBody", "response", "payload", "description", "fieldsBody",
-		"field", "fieldName", "fieldType", "fieldBody", "validation", "type",
-		"typeBody",
+		"field", "fieldName", "fieldType", "fieldBody", "required", "validation",
+		"type", "typeBody",
 	}
 	staticData.predictionContextCache = antlr.NewPredictionContextCache()
 	staticData.serializedATN = []int32{
-		4, 1, 19, 139, 2, 0, 7, 0, 2, 1, 7, 1, 2, 2, 7, 2, 2, 3, 7, 3, 2, 4, 7,
+		4, 1, 20, 144, 2, 0, 7, 0, 2, 1, 7, 1, 2, 2, 7, 2, 2, 3, 7, 3, 2, 4, 7,
 		4, 2, 5, 7, 5, 2, 6, 7, 6, 2, 7, 7, 7, 2, 8, 7, 8, 2, 9, 7, 9, 2, 10, 7,
 		10, 2, 11, 7, 11, 2, 12, 7, 12, 2, 13, 7, 13, 2, 14, 7, 14, 2, 15, 7, 15,
-		2, 16, 7, 16, 2, 17, 7, 17, 1, 0, 1, 0, 1, 0, 4, 0, 40, 8, 0, 11, 0, 12,
-		0, 41, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2,
-		1, 3, 1, 3, 1, 4, 1, 4, 4, 4, 59, 8, 4, 11, 4, 12, 4, 60, 1, 5, 1, 5, 1,
-		5, 1, 5, 1, 5, 1, 5, 1, 6, 1, 6, 1, 6, 4, 6, 72, 8, 6, 11, 6, 12, 6, 73,
-		1, 7, 1, 7, 1, 7, 1, 7, 1, 7, 1, 7, 1, 7, 3, 7, 83, 8, 7, 1, 8, 1, 8, 1,
-		8, 1, 8, 1, 8, 1, 8, 1, 8, 3, 8, 92, 8, 8, 1, 9, 1, 9, 1, 9, 1, 9, 1, 10,
-		4, 10, 99, 8, 10, 11, 10, 12, 10, 100, 1, 11, 1, 11, 1, 11, 1, 11, 1, 11,
-		1, 11, 1, 11, 3, 11, 110, 8, 11, 1, 12, 1, 12, 1, 13, 1, 13, 1, 14, 1,
-		14, 1, 14, 1, 14, 4, 14, 120, 8, 14, 11, 14, 12, 14, 121, 1, 15, 1, 15,
-		1, 15, 1, 15, 1, 16, 1, 16, 1, 16, 1, 16, 1, 16, 1, 16, 1, 17, 4, 17, 135,
-		8, 17, 11, 17, 12, 17, 136, 1, 17, 0, 0, 18, 0, 2, 4, 6, 8, 10, 12, 14,
-		16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 0, 0, 137, 0, 39, 1, 0, 0, 0, 2,
-		45, 1, 0, 0, 0, 4, 48, 1, 0, 0, 0, 6, 54, 1, 0, 0, 0, 8, 58, 1, 0, 0, 0,
-		10, 62, 1, 0, 0, 0, 12, 71, 1, 0, 0, 0, 14, 75, 1, 0, 0, 0, 16, 84, 1,
-		0, 0, 0, 18, 93, 1, 0, 0, 0, 20, 98, 1, 0, 0, 0, 22, 102, 1, 0, 0, 0, 24,
-		111, 1, 0, 0, 0, 26, 113, 1, 0, 0, 0, 28, 119, 1, 0, 0, 0, 30, 123, 1,
-		0, 0, 0, 32, 127, 1, 0, 0, 0, 34, 134, 1, 0, 0, 0, 36, 40, 3, 2, 1, 0,
-		37, 40, 3, 4, 2, 0, 38, 40, 3, 32, 16, 0, 39, 36, 1, 0, 0, 0, 39, 37, 1,
-		0, 0, 0, 39, 38, 1, 0, 0, 0, 40, 41, 1, 0, 0, 0, 41, 39, 1, 0, 0, 0, 41,
-		42, 1, 0, 0, 0, 42, 43, 1, 0, 0, 0, 43, 44, 5, 0, 0, 1, 44, 1, 1, 0, 0,
-		0, 45, 46, 5, 1, 0, 0, 46, 47, 5, 18, 0, 0, 47, 3, 1, 0, 0, 0, 48, 49,
-		5, 2, 0, 0, 49, 50, 3, 6, 3, 0, 50, 51, 5, 3, 0, 0, 51, 52, 3, 8, 4, 0,
-		52, 53, 5, 4, 0, 0, 53, 5, 1, 0, 0, 0, 54, 55, 5, 15, 0, 0, 55, 7, 1, 0,
-		0, 0, 56, 59, 3, 18, 9, 0, 57, 59, 3, 10, 5, 0, 58, 56, 1, 0, 0, 0, 58,
-		57, 1, 0, 0, 0, 59, 60, 1, 0, 0, 0, 60, 58, 1, 0, 0, 0, 60, 61, 1, 0, 0,
-		0, 61, 9, 1, 0, 0, 0, 62, 63, 5, 5, 0, 0, 63, 64, 5, 15, 0, 0, 64, 65,
-		5, 3, 0, 0, 65, 66, 3, 12, 6, 0, 66, 67, 5, 4, 0, 0, 67, 11, 1, 0, 0, 0,
-		68, 72, 3, 18, 9, 0, 69, 72, 3, 16, 8, 0, 70, 72, 3, 14, 7, 0, 71, 68,
-		1, 0, 0, 0, 71, 69, 1, 0, 0, 0, 71, 70, 1, 0, 0, 0, 72, 73, 1, 0, 0, 0,
-		73, 71, 1, 0, 0, 0, 73, 74, 1, 0, 0, 0, 74, 13, 1, 0, 0, 0, 75, 82, 5,
-		6, 0, 0, 76, 77, 5, 3, 0, 0, 77, 78, 3, 20, 10, 0, 78, 79, 5, 4, 0, 0,
-		79, 83, 1, 0, 0, 0, 80, 81, 5, 14, 0, 0, 81, 83, 5, 15, 0, 0, 82, 76, 1,
-		0, 0, 0, 82, 80, 1, 0, 0, 0, 83, 15, 1, 0, 0, 0, 84, 91, 5, 7, 0, 0, 85,
-		86, 5, 3, 0, 0, 86, 87, 3, 20, 10, 0, 87, 88, 5, 4, 0, 0, 88, 92, 1, 0,
-		0, 0, 89, 90, 5, 14, 0, 0, 90, 92, 5, 15, 0, 0, 91, 85, 1, 0, 0, 0, 91,
-		89, 1, 0, 0, 0, 92, 17, 1, 0, 0, 0, 93, 94, 5, 8, 0, 0, 94, 95, 5, 14,
-		0, 0, 95, 96, 5, 18, 0, 0, 96, 19, 1, 0, 0, 0, 97, 99, 3, 22, 11, 0, 98,
-		97, 1, 0, 0, 0, 99, 100, 1, 0, 0, 0, 100, 98, 1, 0, 0, 0, 100, 101, 1,
-		0, 0, 0, 101, 21, 1, 0, 0, 0, 102, 103, 5, 9, 0, 0, 103, 104, 3, 24, 12,
-		0, 104, 109, 3, 26, 13, 0, 105, 106, 5, 3, 0, 0, 106, 107, 3, 28, 14, 0,
-		107, 108, 5, 4, 0, 0, 108, 110, 1, 0, 0, 0, 109, 105, 1, 0, 0, 0, 109,
-		110, 1, 0, 0, 0, 110, 23, 1, 0, 0, 0, 111, 112, 5, 15, 0, 0, 112, 25, 1,
-		0, 0, 0, 113, 114, 5, 15, 0, 0, 114, 27, 1, 0, 0, 0, 115, 120, 3, 18, 9,
-		0, 116, 120, 3, 30, 15, 0, 117, 120, 5, 10, 0, 0, 118, 120, 5, 11, 0, 0,
-		119, 115, 1, 0, 0, 0, 119, 116, 1, 0, 0, 0, 119, 117, 1, 0, 0, 0, 119,
-		118, 1, 0, 0, 0, 120, 121, 1, 0, 0, 0, 121, 119, 1, 0, 0, 0, 121, 122,
-		1, 0, 0, 0, 122, 29, 1, 0, 0, 0, 123, 124, 5, 12, 0, 0, 124, 125, 5, 14,
-		0, 0, 125, 126, 5, 18, 0, 0, 126, 31, 1, 0, 0, 0, 127, 128, 5, 13, 0, 0,
-		128, 129, 5, 15, 0, 0, 129, 130, 5, 3, 0, 0, 130, 131, 3, 34, 17, 0, 131,
-		132, 5, 4, 0, 0, 132, 33, 1, 0, 0, 0, 133, 135, 3, 22, 11, 0, 134, 133,
-		1, 0, 0, 0, 135, 136, 1, 0, 0, 0, 136, 134, 1, 0, 0, 0, 136, 137, 1, 0,
-		0, 0, 137, 35, 1, 0, 0, 0, 13, 39, 41, 58, 60, 71, 73, 82, 91, 100, 109,
-		119, 121, 136,
+		2, 16, 7, 16, 2, 17, 7, 17, 2, 18, 7, 18, 1, 0, 1, 0, 1, 0, 4, 0, 42, 8,
+		0, 11, 0, 12, 0, 43, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 2, 1, 2, 1, 2, 1,
+		2, 1, 2, 1, 2, 1, 3, 1, 3, 1, 4, 1, 4, 4, 4, 61, 8, 4, 11, 4, 12, 4, 62,
+		1, 5, 1, 5, 1, 5, 1, 5, 1, 5, 1, 5, 1, 6, 1, 6, 1, 6, 4, 6, 74, 8, 6, 11,
+		6, 12, 6, 75, 1, 7, 1, 7, 1, 7, 1, 7, 1, 7, 1, 7, 1, 7, 3, 7, 85, 8, 7,
+		1, 8, 1, 8, 1, 8, 1, 8, 1, 8, 1, 8, 1, 8, 3, 8, 94, 8, 8, 1, 9, 1, 9, 1,
+		9, 1, 9, 1, 10, 4, 10, 101, 8, 10, 11, 10, 12, 10, 102, 1, 11, 1, 11, 1,
+		11, 1, 11, 1, 11, 1, 11, 1, 11, 3, 11, 112, 8, 11, 1, 12, 1, 12, 1, 13,
+		1, 13, 1, 14, 1, 14, 1, 14, 4, 14, 121, 8, 14, 11, 14, 12, 14, 122, 1,
+		15, 1, 15, 1, 15, 1, 15, 1, 16, 1, 16, 1, 16, 1, 16, 1, 17, 1, 17, 1, 17,
+		1, 17, 1, 17, 1, 17, 1, 18, 4, 18, 140, 8, 18, 11, 18, 12, 18, 141, 1,
+		18, 0, 0, 19, 0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30,
+		32, 34, 36, 0, 1, 1, 0, 11, 12, 140, 0, 41, 1, 0, 0, 0, 2, 47, 1, 0, 0,
+		0, 4, 50, 1, 0, 0, 0, 6, 56, 1, 0, 0, 0, 8, 60, 1, 0, 0, 0, 10, 64, 1,
+		0, 0, 0, 12, 73, 1, 0, 0, 0, 14, 77, 1, 0, 0, 0, 16, 86, 1, 0, 0, 0, 18,
+		95, 1, 0, 0, 0, 20, 100, 1, 0, 0, 0, 22, 104, 1, 0, 0, 0, 24, 113, 1, 0,
+		0, 0, 26, 115, 1, 0, 0, 0, 28, 120, 1, 0, 0, 0, 30, 124, 1, 0, 0, 0, 32,
+		128, 1, 0, 0, 0, 34, 132, 1, 0, 0, 0, 36, 139, 1, 0, 0, 0, 38, 42, 3, 2,
+		1, 0, 39, 42, 3, 4, 2, 0, 40, 42, 3, 34, 17, 0, 41, 38, 1, 0, 0, 0, 41,
+		39, 1, 0, 0, 0, 41, 40, 1, 0, 0, 0, 42, 43, 1, 0, 0, 0, 43, 41, 1, 0, 0,
+		0, 43, 44, 1, 0, 0, 0, 44, 45, 1, 0, 0, 0, 45, 46, 5, 0, 0, 1, 46, 1, 1,
+		0, 0, 0, 47, 48, 5, 1, 0, 0, 48, 49, 5, 19, 0, 0, 49, 3, 1, 0, 0, 0, 50,
+		51, 5, 2, 0, 0, 51, 52, 3, 6, 3, 0, 52, 53, 5, 3, 0, 0, 53, 54, 3, 8, 4,
+		0, 54, 55, 5, 4, 0, 0, 55, 5, 1, 0, 0, 0, 56, 57, 5, 16, 0, 0, 57, 7, 1,
+		0, 0, 0, 58, 61, 3, 18, 9, 0, 59, 61, 3, 10, 5, 0, 60, 58, 1, 0, 0, 0,
+		60, 59, 1, 0, 0, 0, 61, 62, 1, 0, 0, 0, 62, 60, 1, 0, 0, 0, 62, 63, 1,
+		0, 0, 0, 63, 9, 1, 0, 0, 0, 64, 65, 5, 5, 0, 0, 65, 66, 5, 16, 0, 0, 66,
+		67, 5, 3, 0, 0, 67, 68, 3, 12, 6, 0, 68, 69, 5, 4, 0, 0, 69, 11, 1, 0,
+		0, 0, 70, 74, 3, 18, 9, 0, 71, 74, 3, 16, 8, 0, 72, 74, 3, 14, 7, 0, 73,
+		70, 1, 0, 0, 0, 73, 71, 1, 0, 0, 0, 73, 72, 1, 0, 0, 0, 74, 75, 1, 0, 0,
+		0, 75, 73, 1, 0, 0, 0, 75, 76, 1, 0, 0, 0, 76, 13, 1, 0, 0, 0, 77, 84,
+		5, 6, 0, 0, 78, 79, 5, 3, 0, 0, 79, 80, 3, 20, 10, 0, 80, 81, 5, 4, 0,
+		0, 81, 85, 1, 0, 0, 0, 82, 83, 5, 15, 0, 0, 83, 85, 5, 16, 0, 0, 84, 78,
+		1, 0, 0, 0, 84, 82, 1, 0, 0, 0, 85, 15, 1, 0, 0, 0, 86, 93, 5, 7, 0, 0,
+		87, 88, 5, 3, 0, 0, 88, 89, 3, 20, 10, 0, 89, 90, 5, 4, 0, 0, 90, 94, 1,
+		0, 0, 0, 91, 92, 5, 15, 0, 0, 92, 94, 5, 16, 0, 0, 93, 87, 1, 0, 0, 0,
+		93, 91, 1, 0, 0, 0, 94, 17, 1, 0, 0, 0, 95, 96, 5, 8, 0, 0, 96, 97, 5,
+		15, 0, 0, 97, 98, 5, 19, 0, 0, 98, 19, 1, 0, 0, 0, 99, 101, 3, 22, 11,
+		0, 100, 99, 1, 0, 0, 0, 101, 102, 1, 0, 0, 0, 102, 100, 1, 0, 0, 0, 102,
+		103, 1, 0, 0, 0, 103, 21, 1, 0, 0, 0, 104, 105, 5, 9, 0, 0, 105, 106, 3,
+		24, 12, 0, 106, 111, 3, 26, 13, 0, 107, 108, 5, 3, 0, 0, 108, 109, 3, 28,
+		14, 0, 109, 110, 5, 4, 0, 0, 110, 112, 1, 0, 0, 0, 111, 107, 1, 0, 0, 0,
+		111, 112, 1, 0, 0, 0, 112, 23, 1, 0, 0, 0, 113, 114, 5, 16, 0, 0, 114,
+		25, 1, 0, 0, 0, 115, 116, 5, 16, 0, 0, 116, 27, 1, 0, 0, 0, 117, 121, 3,
+		18, 9, 0, 118, 121, 3, 32, 16, 0, 119, 121, 3, 30, 15, 0, 120, 117, 1,
+		0, 0, 0, 120, 118, 1, 0, 0, 0, 120, 119, 1, 0, 0, 0, 121, 122, 1, 0, 0,
+		0, 122, 120, 1, 0, 0, 0, 122, 123, 1, 0, 0, 0, 123, 29, 1, 0, 0, 0, 124,
+		125, 5, 10, 0, 0, 125, 126, 5, 15, 0, 0, 126, 127, 7, 0, 0, 0, 127, 31,
+		1, 0, 0, 0, 128, 129, 5, 13, 0, 0, 129, 130, 5, 15, 0, 0, 130, 131, 5,
+		19, 0, 0, 131, 33, 1, 0, 0, 0, 132, 133, 5, 14, 0, 0, 133, 134, 5, 16,
+		0, 0, 134, 135, 5, 3, 0, 0, 135, 136, 3, 36, 18, 0, 136, 137, 5, 4, 0,
+		0, 137, 35, 1, 0, 0, 0, 138, 140, 3, 22, 11, 0, 139, 138, 1, 0, 0, 0, 140,
+		141, 1, 0, 0, 0, 141, 139, 1, 0, 0, 0, 141, 142, 1, 0, 0, 0, 142, 37, 1,
+		0, 0, 0, 13, 41, 43, 60, 62, 73, 75, 84, 93, 102, 111, 120, 122, 141,
 	}
 	deserializer := antlr.NewATNDeserializer(nil)
 	staticData.atn = deserializer.Deserialize(staticData.serializedATN)
@@ -156,12 +157,13 @@ const (
 	MyDSLParserT__10             = 11
 	MyDSLParserT__11             = 12
 	MyDSLParserT__12             = 13
-	MyDSLParserEQUAL_SIGN        = 14
-	MyDSLParserIDENTIFIER        = 15
-	MyDSLParserCOMMENT           = 16
-	MyDSLParserMULTILINE_COMMENT = 17
-	MyDSLParserSTRING_LITERAL    = 18
-	MyDSLParserWS                = 19
+	MyDSLParserT__13             = 14
+	MyDSLParserEQUAL_SIGN        = 15
+	MyDSLParserIDENTIFIER        = 16
+	MyDSLParserCOMMENT           = 17
+	MyDSLParserMULTILINE_COMMENT = 18
+	MyDSLParserSTRING_LITERAL    = 19
+	MyDSLParserWS                = 20
 )
 
 // MyDSLParser rules.
@@ -181,9 +183,10 @@ const (
 	MyDSLParserRULE_fieldName       = 12
 	MyDSLParserRULE_fieldType       = 13
 	MyDSLParserRULE_fieldBody       = 14
-	MyDSLParserRULE_validation      = 15
-	MyDSLParserRULE_type            = 16
-	MyDSLParserRULE_typeBody        = 17
+	MyDSLParserRULE_required        = 15
+	MyDSLParserRULE_validation      = 16
+	MyDSLParserRULE_type            = 17
+	MyDSLParserRULE_typeBody        = 18
 )
 
 // IApiBodyContext is an interface to support dynamic dispatch.
@@ -405,30 +408,30 @@ func (p *MyDSLParser) ApiBody() (localctx IApiBodyContext) {
 	}()
 
 	p.EnterOuterAlt(localctx, 1)
-	p.SetState(39)
+	p.SetState(41)
 	p.GetErrorHandler().Sync(p)
 	_la = p.GetTokenStream().LA(1)
 
-	for ok := true; ok; ok = ((int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&8198) != 0) {
-		p.SetState(39)
+	for ok := true; ok; ok = ((int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&16390) != 0) {
+		p.SetState(41)
 		p.GetErrorHandler().Sync(p)
 
 		switch p.GetTokenStream().LA(1) {
 		case MyDSLParserT__0:
 			{
-				p.SetState(36)
+				p.SetState(38)
 				p.ImportDirective()
 			}
 
 		case MyDSLParserT__1:
 			{
-				p.SetState(37)
+				p.SetState(39)
 				p.Service()
 			}
 
-		case MyDSLParserT__12:
+		case MyDSLParserT__13:
 			{
-				p.SetState(38)
+				p.SetState(40)
 				p.Type_()
 			}
 
@@ -436,12 +439,12 @@ func (p *MyDSLParser) ApiBody() (localctx IApiBodyContext) {
 			panic(antlr.NewNoViableAltException(p, nil, nil, nil, nil, nil))
 		}
 
-		p.SetState(41)
+		p.SetState(43)
 		p.GetErrorHandler().Sync(p)
 		_la = p.GetTokenStream().LA(1)
 	}
 	{
-		p.SetState(43)
+		p.SetState(45)
 		p.Match(MyDSLParserEOF)
 	}
 
@@ -538,11 +541,11 @@ func (p *MyDSLParser) ImportDirective() (localctx IImportDirectiveContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(45)
+		p.SetState(47)
 		p.Match(MyDSLParserT__0)
 	}
 	{
-		p.SetState(46)
+		p.SetState(48)
 		p.Match(MyDSLParserSTRING_LITERAL)
 	}
 
@@ -668,23 +671,23 @@ func (p *MyDSLParser) Service() (localctx IServiceContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(48)
+		p.SetState(50)
 		p.Match(MyDSLParserT__1)
 	}
 	{
-		p.SetState(49)
+		p.SetState(51)
 		p.ServiceName()
 	}
 	{
-		p.SetState(50)
+		p.SetState(52)
 		p.Match(MyDSLParserT__2)
 	}
 	{
-		p.SetState(51)
+		p.SetState(53)
 		p.ServiceBody()
 	}
 	{
-		p.SetState(52)
+		p.SetState(54)
 		p.Match(MyDSLParserT__3)
 	}
 
@@ -781,7 +784,7 @@ func (p *MyDSLParser) ServiceName() (localctx IServiceNameContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(54)
+		p.SetState(56)
 		p.Match(MyDSLParserIDENTIFIER)
 	}
 
@@ -959,24 +962,24 @@ func (p *MyDSLParser) ServiceBody() (localctx IServiceBodyContext) {
 	}()
 
 	p.EnterOuterAlt(localctx, 1)
-	p.SetState(58)
+	p.SetState(60)
 	p.GetErrorHandler().Sync(p)
 	_la = p.GetTokenStream().LA(1)
 
 	for ok := true; ok; ok = _la == MyDSLParserT__4 || _la == MyDSLParserT__7 {
-		p.SetState(58)
+		p.SetState(60)
 		p.GetErrorHandler().Sync(p)
 
 		switch p.GetTokenStream().LA(1) {
 		case MyDSLParserT__7:
 			{
-				p.SetState(56)
+				p.SetState(58)
 				p.Description()
 			}
 
 		case MyDSLParserT__4:
 			{
-				p.SetState(57)
+				p.SetState(59)
 				p.Method()
 			}
 
@@ -984,7 +987,7 @@ func (p *MyDSLParser) ServiceBody() (localctx IServiceBodyContext) {
 			panic(antlr.NewNoViableAltException(p, nil, nil, nil, nil, nil))
 		}
 
-		p.SetState(60)
+		p.SetState(62)
 		p.GetErrorHandler().Sync(p)
 		_la = p.GetTokenStream().LA(1)
 	}
@@ -1099,23 +1102,23 @@ func (p *MyDSLParser) Method() (localctx IMethodContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(62)
+		p.SetState(64)
 		p.Match(MyDSLParserT__4)
 	}
 	{
-		p.SetState(63)
+		p.SetState(65)
 		p.Match(MyDSLParserIDENTIFIER)
 	}
 	{
-		p.SetState(64)
+		p.SetState(66)
 		p.Match(MyDSLParserT__2)
 	}
 	{
-		p.SetState(65)
+		p.SetState(67)
 		p.MethodBody()
 	}
 	{
-		p.SetState(66)
+		p.SetState(68)
 		p.Match(MyDSLParserT__3)
 	}
 
@@ -1336,30 +1339,30 @@ func (p *MyDSLParser) MethodBody() (localctx IMethodBodyContext) {
 	}()
 
 	p.EnterOuterAlt(localctx, 1)
-	p.SetState(71)
+	p.SetState(73)
 	p.GetErrorHandler().Sync(p)
 	_la = p.GetTokenStream().LA(1)
 
 	for ok := true; ok; ok = ((int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&448) != 0) {
-		p.SetState(71)
+		p.SetState(73)
 		p.GetErrorHandler().Sync(p)
 
 		switch p.GetTokenStream().LA(1) {
 		case MyDSLParserT__7:
 			{
-				p.SetState(68)
+				p.SetState(70)
 				p.Description()
 			}
 
 		case MyDSLParserT__6:
 			{
-				p.SetState(69)
+				p.SetState(71)
 				p.Payload()
 			}
 
 		case MyDSLParserT__5:
 			{
-				p.SetState(70)
+				p.SetState(72)
 				p.Response()
 			}
 
@@ -1367,7 +1370,7 @@ func (p *MyDSLParser) MethodBody() (localctx IMethodBodyContext) {
 			panic(antlr.NewNoViableAltException(p, nil, nil, nil, nil, nil))
 		}
 
-		p.SetState(73)
+		p.SetState(75)
 		p.GetErrorHandler().Sync(p)
 		_la = p.GetTokenStream().LA(1)
 	}
@@ -1487,34 +1490,34 @@ func (p *MyDSLParser) Response() (localctx IResponseContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(75)
+		p.SetState(77)
 		p.Match(MyDSLParserT__5)
 	}
-	p.SetState(82)
+	p.SetState(84)
 	p.GetErrorHandler().Sync(p)
 
 	switch p.GetTokenStream().LA(1) {
 	case MyDSLParserT__2:
 		{
-			p.SetState(76)
+			p.SetState(78)
 			p.Match(MyDSLParserT__2)
 		}
 		{
-			p.SetState(77)
+			p.SetState(79)
 			p.FieldsBody()
 		}
 		{
-			p.SetState(78)
+			p.SetState(80)
 			p.Match(MyDSLParserT__3)
 		}
 
 	case MyDSLParserEQUAL_SIGN:
 		{
-			p.SetState(80)
+			p.SetState(82)
 			p.Match(MyDSLParserEQUAL_SIGN)
 		}
 		{
-			p.SetState(81)
+			p.SetState(83)
 			p.Match(MyDSLParserIDENTIFIER)
 		}
 
@@ -1637,34 +1640,34 @@ func (p *MyDSLParser) Payload() (localctx IPayloadContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(84)
+		p.SetState(86)
 		p.Match(MyDSLParserT__6)
 	}
-	p.SetState(91)
+	p.SetState(93)
 	p.GetErrorHandler().Sync(p)
 
 	switch p.GetTokenStream().LA(1) {
 	case MyDSLParserT__2:
 		{
-			p.SetState(85)
+			p.SetState(87)
 			p.Match(MyDSLParserT__2)
 		}
 		{
-			p.SetState(86)
+			p.SetState(88)
 			p.FieldsBody()
 		}
 		{
-			p.SetState(87)
+			p.SetState(89)
 			p.Match(MyDSLParserT__3)
 		}
 
 	case MyDSLParserEQUAL_SIGN:
 		{
-			p.SetState(89)
+			p.SetState(91)
 			p.Match(MyDSLParserEQUAL_SIGN)
 		}
 		{
-			p.SetState(90)
+			p.SetState(92)
 			p.Match(MyDSLParserIDENTIFIER)
 		}
 
@@ -1770,15 +1773,15 @@ func (p *MyDSLParser) Description() (localctx IDescriptionContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(93)
+		p.SetState(95)
 		p.Match(MyDSLParserT__7)
 	}
 	{
-		p.SetState(94)
+		p.SetState(96)
 		p.Match(MyDSLParserEQUAL_SIGN)
 	}
 	{
-		p.SetState(95)
+		p.SetState(97)
 		p.Match(MyDSLParserSTRING_LITERAL)
 	}
 
@@ -1913,17 +1916,17 @@ func (p *MyDSLParser) FieldsBody() (localctx IFieldsBodyContext) {
 	}()
 
 	p.EnterOuterAlt(localctx, 1)
-	p.SetState(98)
+	p.SetState(100)
 	p.GetErrorHandler().Sync(p)
 	_la = p.GetTokenStream().LA(1)
 
 	for ok := true; ok; ok = _la == MyDSLParserT__8 {
 		{
-			p.SetState(97)
+			p.SetState(99)
 			p.Field()
 		}
 
-		p.SetState(100)
+		p.SetState(102)
 		p.GetErrorHandler().Sync(p)
 		_la = p.GetTokenStream().LA(1)
 	}
@@ -2068,32 +2071,32 @@ func (p *MyDSLParser) Field() (localctx IFieldContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(102)
+		p.SetState(104)
 		p.Match(MyDSLParserT__8)
 	}
 	{
-		p.SetState(103)
+		p.SetState(105)
 		p.FieldName()
 	}
 	{
-		p.SetState(104)
+		p.SetState(106)
 		p.FieldType()
 	}
-	p.SetState(109)
+	p.SetState(111)
 	p.GetErrorHandler().Sync(p)
 	_la = p.GetTokenStream().LA(1)
 
 	if _la == MyDSLParserT__2 {
 		{
-			p.SetState(105)
+			p.SetState(107)
 			p.Match(MyDSLParserT__2)
 		}
 		{
-			p.SetState(106)
+			p.SetState(108)
 			p.FieldBody()
 		}
 		{
-			p.SetState(107)
+			p.SetState(109)
 			p.Match(MyDSLParserT__3)
 		}
 
@@ -2192,7 +2195,7 @@ func (p *MyDSLParser) FieldName() (localctx IFieldNameContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(111)
+		p.SetState(113)
 		p.Match(MyDSLParserIDENTIFIER)
 	}
 
@@ -2289,7 +2292,7 @@ func (p *MyDSLParser) FieldType() (localctx IFieldTypeContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(113)
+		p.SetState(115)
 		p.Match(MyDSLParserIDENTIFIER)
 	}
 
@@ -2308,6 +2311,8 @@ type IFieldBodyContext interface {
 	Description(i int) IDescriptionContext
 	AllValidation() []IValidationContext
 	Validation(i int) IValidationContext
+	AllRequired() []IRequiredContext
+	Required(i int) IRequiredContext
 
 	// IsFieldBodyContext differentiates from other interfaces.
 	IsFieldBodyContext()
@@ -2422,6 +2427,47 @@ func (s *FieldBodyContext) Validation(i int) IValidationContext {
 	return t.(IValidationContext)
 }
 
+func (s *FieldBodyContext) AllRequired() []IRequiredContext {
+	children := s.GetChildren()
+	len := 0
+	for _, ctx := range children {
+		if _, ok := ctx.(IRequiredContext); ok {
+			len++
+		}
+	}
+
+	tst := make([]IRequiredContext, len)
+	i := 0
+	for _, ctx := range children {
+		if t, ok := ctx.(IRequiredContext); ok {
+			tst[i] = t.(IRequiredContext)
+			i++
+		}
+	}
+
+	return tst
+}
+
+func (s *FieldBodyContext) Required(i int) IRequiredContext {
+	var t antlr.RuleContext
+	j := 0
+	for _, ctx := range s.GetChildren() {
+		if _, ok := ctx.(IRequiredContext); ok {
+			if j == i {
+				t = ctx.(antlr.RuleContext)
+				break
+			}
+			j++
+		}
+	}
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(IRequiredContext)
+}
+
 func (s *FieldBodyContext) GetRuleContext() antlr.RuleContext {
 	return s
 }
@@ -2467,46 +2513,153 @@ func (p *MyDSLParser) FieldBody() (localctx IFieldBodyContext) {
 	}()
 
 	p.EnterOuterAlt(localctx, 1)
-	p.SetState(119)
+	p.SetState(120)
 	p.GetErrorHandler().Sync(p)
 	_la = p.GetTokenStream().LA(1)
 
-	for ok := true; ok; ok = ((int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&7424) != 0) {
-		p.SetState(119)
+	for ok := true; ok; ok = ((int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&9472) != 0) {
+		p.SetState(120)
 		p.GetErrorHandler().Sync(p)
 
 		switch p.GetTokenStream().LA(1) {
 		case MyDSLParserT__7:
 			{
-				p.SetState(115)
+				p.SetState(117)
 				p.Description()
 			}
 
-		case MyDSLParserT__11:
+		case MyDSLParserT__12:
 			{
-				p.SetState(116)
+				p.SetState(118)
 				p.Validation()
 			}
 
 		case MyDSLParserT__9:
 			{
-				p.SetState(117)
-				p.Match(MyDSLParserT__9)
-			}
-
-		case MyDSLParserT__10:
-			{
-				p.SetState(118)
-				p.Match(MyDSLParserT__10)
+				p.SetState(119)
+				p.Required()
 			}
 
 		default:
 			panic(antlr.NewNoViableAltException(p, nil, nil, nil, nil, nil))
 		}
 
-		p.SetState(121)
+		p.SetState(122)
 		p.GetErrorHandler().Sync(p)
 		_la = p.GetTokenStream().LA(1)
+	}
+
+	return localctx
+}
+
+// IRequiredContext is an interface to support dynamic dispatch.
+type IRequiredContext interface {
+	antlr.ParserRuleContext
+
+	// GetParser returns the parser.
+	GetParser() antlr.Parser
+
+	// Getter signatures
+	EQUAL_SIGN() antlr.TerminalNode
+
+	// IsRequiredContext differentiates from other interfaces.
+	IsRequiredContext()
+}
+
+type RequiredContext struct {
+	*antlr.BaseParserRuleContext
+	parser antlr.Parser
+}
+
+func NewEmptyRequiredContext() *RequiredContext {
+	var p = new(RequiredContext)
+	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	p.RuleIndex = MyDSLParserRULE_required
+	return p
+}
+
+func (*RequiredContext) IsRequiredContext() {}
+
+func NewRequiredContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *RequiredContext {
+	var p = new(RequiredContext)
+
+	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+
+	p.parser = parser
+	p.RuleIndex = MyDSLParserRULE_required
+
+	return p
+}
+
+func (s *RequiredContext) GetParser() antlr.Parser { return s.parser }
+
+func (s *RequiredContext) EQUAL_SIGN() antlr.TerminalNode {
+	return s.GetToken(MyDSLParserEQUAL_SIGN, 0)
+}
+
+func (s *RequiredContext) GetRuleContext() antlr.RuleContext {
+	return s
+}
+
+func (s *RequiredContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
+	return antlr.TreesStringTree(s, ruleNames, recog)
+}
+
+func (s *RequiredContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(MyDSLListener); ok {
+		listenerT.EnterRequired(s)
+	}
+}
+
+func (s *RequiredContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(MyDSLListener); ok {
+		listenerT.ExitRequired(s)
+	}
+}
+
+func (p *MyDSLParser) Required() (localctx IRequiredContext) {
+	this := p
+	_ = this
+
+	localctx = NewRequiredContext(p, p.GetParserRuleContext(), p.GetState())
+	p.EnterRule(localctx, 30, MyDSLParserRULE_required)
+	var _la int
+
+	defer func() {
+		p.ExitRule()
+	}()
+
+	defer func() {
+		if err := recover(); err != nil {
+			if v, ok := err.(antlr.RecognitionException); ok {
+				localctx.SetException(v)
+				p.GetErrorHandler().ReportError(p, v)
+				p.GetErrorHandler().Recover(p, v)
+			} else {
+				panic(err)
+			}
+		}
+	}()
+
+	p.EnterOuterAlt(localctx, 1)
+	{
+		p.SetState(124)
+		p.Match(MyDSLParserT__9)
+	}
+	{
+		p.SetState(125)
+		p.Match(MyDSLParserEQUAL_SIGN)
+	}
+	{
+		p.SetState(126)
+		_la = p.GetTokenStream().LA(1)
+
+		if !(_la == MyDSLParserT__10 || _la == MyDSLParserT__11) {
+			p.GetErrorHandler().RecoverInline(p)
+		} else {
+			p.GetErrorHandler().ReportMatch(p)
+			p.Consume()
+		}
 	}
 
 	return localctx
@@ -2587,7 +2740,7 @@ func (p *MyDSLParser) Validation() (localctx IValidationContext) {
 	_ = this
 
 	localctx = NewValidationContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 30, MyDSLParserRULE_validation)
+	p.EnterRule(localctx, 32, MyDSLParserRULE_validation)
 
 	defer func() {
 		p.ExitRule()
@@ -2607,15 +2760,15 @@ func (p *MyDSLParser) Validation() (localctx IValidationContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(123)
-		p.Match(MyDSLParserT__11)
+		p.SetState(128)
+		p.Match(MyDSLParserT__12)
 	}
 	{
-		p.SetState(124)
+		p.SetState(129)
 		p.Match(MyDSLParserEQUAL_SIGN)
 	}
 	{
-		p.SetState(125)
+		p.SetState(130)
 		p.Match(MyDSLParserSTRING_LITERAL)
 	}
 
@@ -2709,7 +2862,7 @@ func (p *MyDSLParser) Type_() (localctx ITypeContext) {
 	_ = this
 
 	localctx = NewTypeContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 32, MyDSLParserRULE_type)
+	p.EnterRule(localctx, 34, MyDSLParserRULE_type)
 
 	defer func() {
 		p.ExitRule()
@@ -2729,23 +2882,23 @@ func (p *MyDSLParser) Type_() (localctx ITypeContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(127)
-		p.Match(MyDSLParserT__12)
+		p.SetState(132)
+		p.Match(MyDSLParserT__13)
 	}
 	{
-		p.SetState(128)
+		p.SetState(133)
 		p.Match(MyDSLParserIDENTIFIER)
 	}
 	{
-		p.SetState(129)
+		p.SetState(134)
 		p.Match(MyDSLParserT__2)
 	}
 	{
-		p.SetState(130)
+		p.SetState(135)
 		p.TypeBody()
 	}
 	{
-		p.SetState(131)
+		p.SetState(136)
 		p.Match(MyDSLParserT__3)
 	}
 
@@ -2860,7 +3013,7 @@ func (p *MyDSLParser) TypeBody() (localctx ITypeBodyContext) {
 	_ = this
 
 	localctx = NewTypeBodyContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 34, MyDSLParserRULE_typeBody)
+	p.EnterRule(localctx, 36, MyDSLParserRULE_typeBody)
 	var _la int
 
 	defer func() {
@@ -2880,17 +3033,17 @@ func (p *MyDSLParser) TypeBody() (localctx ITypeBodyContext) {
 	}()
 
 	p.EnterOuterAlt(localctx, 1)
-	p.SetState(134)
+	p.SetState(139)
 	p.GetErrorHandler().Sync(p)
 	_la = p.GetTokenStream().LA(1)
 
 	for ok := true; ok; ok = _la == MyDSLParserT__8 {
 		{
-			p.SetState(133)
+			p.SetState(138)
 			p.Field()
 		}
 
-		p.SetState(136)
+		p.SetState(141)
 		p.GetErrorHandler().Sync(p)
 		_la = p.GetTokenStream().LA(1)
 	}

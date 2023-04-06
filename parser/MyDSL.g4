@@ -24,10 +24,9 @@ fieldsBody: field+;
 field: 'field' fieldName fieldType ('{' fieldBody '}')?;
 fieldName: IDENTIFIER;
 fieldType: IDENTIFIER;
-fieldBody: (description | validation | 'required' | 'optional')+;
+fieldBody: (description | validation | required )+;
 
-//required: { !optional() }? 'required';
-//optional: { !required() }? 'optional';
+required: 'required' EQUAL_SIGN ('true' | 'false');
 
 validation: 'match' EQUAL_SIGN STRING_LITERAL;
 

@@ -53,6 +53,9 @@ type MyDSLListener interface {
 	// EnterFieldBody is called when entering the fieldBody production.
 	EnterFieldBody(c *FieldBodyContext)
 
+	// EnterRequired is called when entering the required production.
+	EnterRequired(c *RequiredContext)
+
 	// EnterValidation is called when entering the validation production.
 	EnterValidation(c *ValidationContext)
 
@@ -106,6 +109,9 @@ type MyDSLListener interface {
 
 	// ExitFieldBody is called when exiting the fieldBody production.
 	ExitFieldBody(c *FieldBodyContext)
+
+	// ExitRequired is called when exiting the required production.
+	ExitRequired(c *RequiredContext)
 
 	// ExitValidation is called when exiting the validation production.
 	ExitValidation(c *ValidationContext)
